@@ -1,0 +1,6 @@
+numpy
+scipy
+scikit-learn
+robust-laplacian
+potpourri3d
+torch>=1.8.1
