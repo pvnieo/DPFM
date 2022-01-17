@@ -1,0 +1,58 @@
+# dataset params
+dataset:
+  name: shrec16
+  subset: holes
+  root_train: data/shrec_partial_train
+  root_test: data/shrec_partial_test
+  cache_dir: data/op_cache
+
+
+
+# optimizer params
+optimizer:
+  lr: 1e-3
+  b1: 0.9
+  b2: 0.99
+  decay_iter: 100
+  decay_factor: 0.5
+
+training:
+  batch_size: 4
+  epochs: 300
+
+# fmap module params
+fmap:
+  n_fmap: 30  # number of eigenvectors used for fmap
+  k_eig: 128  # number of eigenvectors used for diffusion
+  n_feat: 128
+  C_in: 3
+  lambda_: 100
+  resolvant_gamma: 0.5
+  robust: True
+
+# attention module params
+attention:
+  num_head: 4
+  gnn_dim: 128
+  ref_n_layers: 1
+  cross_sampling_ratio: 0.3
+  attention_type: normal
+
+# overlap module
+overlap:
+  overlap_feat_dim: 32
+
+# loss params
+loss:
+  w_fmap: 1
+  w_acc: 1
+  w_nce: 1
+  nce_t: 0.07
+  nce_num_pairs: 512
+
+# misc
+misc:
+  cuda: True
+  device: 0
+  checkpoint_interval: 5
+  log_interval: 50

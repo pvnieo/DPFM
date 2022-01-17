@@ -127,3 +127,21 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# data folders
+dpfm/data/*
+!dpfm/data/.init
+!dpfm/data/saved_models/
+!dpfm/data/assets/
+!dpfm/data/shrec_partial_train/
+dpfm/data/shrec_partial_train/shapes/*
+!dpfm/data/shrec_partial_train/shapes/cuts-cat.off
+!dpfm/data/shrec_partial_train/shapes/cuts-cat1.off
+dpfm/data/shrec_partial_train/maps/*
+!dpfm/data/shrec_partial_train/maps/cuts-cat1_cuts-cat.map
+!dpfm/data/shrec_partial_test/
+dpfm/data/shrec_partial_test/shapes/*
+!dpfm/data/shrec_partial_test/shapes/cuts-cat.off
+!dpfm/data/shrec_partial_test/shapes/cuts-cat1.off
+dpfm/data/shrec_partial_test/maps/*
+!dpfm/data/shrec_partial_test/maps/cuts-cat1_cuts-cat.map
