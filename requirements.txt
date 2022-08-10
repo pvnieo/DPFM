@@ -1,3 +1,4 @@
+pyyaml
 numpy
 scipy
 scikit-learn
