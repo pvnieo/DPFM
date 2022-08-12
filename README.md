@@ -60,7 +60,7 @@ The results we found are provided in the table below. The syntax X on Y means th
 | Setting | FR on FR | SR on SR | FR on SR | SR on FR |
 | --- | ----------- | ----------- | ----------- | ----------- |
 | GeomFMaps + DiffusionNet | 2.7 | 3.0 | 3.3 | 3.0 |
-| DPFM | 2.0 | 2.3 | 2.7 | 2.5 |
+| DPFM | 2.1 | 2.3 | 2.7 | 2.5 |
 
 We provide two pre-trained models on the FAUST-remeshed and SCAPE-remeshed datasets which are available in `data/saved_models`.
 

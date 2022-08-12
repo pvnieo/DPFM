@@ -17,7 +17,7 @@ optimizer:
 
 training:
   batch_size: 4
-  epochs: 20
+  epochs: 5
 
 # fmap module params
 fmap:
@@ -55,4 +55,3 @@ misc:
   device: 1
   checkpoint_interval: 5
   log_interval: 50
-  test_interval: 1500

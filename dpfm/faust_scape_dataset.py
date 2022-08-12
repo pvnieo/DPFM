@@ -7,7 +7,6 @@ import torch
 from torch.utils.data import Dataset
 
 import potpourri3d as pp3d
-# from utils import normalize_area_scale
 from utils import farthest_point_sample, square_distance, normalize_area_scale
 
 # sys.path.append(os.path.join(os.path.dirname(__file__), "../../src/"))  # add the path to the DiffusionNet src
@@ -161,21 +160,6 @@ class FaustScapeDataset(Dataset):
     def __getitem__(self, idx):
         idx1, idx2 = self.combinations[idx]
 
-        # shape1 = [
-        #     self.verts_list[idx1],
-        #     self.faces_list[idx1],
-        #     self.frames_list[idx1],
-        #     self.massvec_list[idx1],
-        #     self.L_list[idx1],
-        #     self.evals_list[idx1],
-        #     self.evecs_list[idx1],
-        #     self.gradX_list[idx1],
-        #     self.gradY_list[idx1],
-        #     self.hks_list[idx1],
-        #     self.vts_list[idx1],
-        #     self.names_list[idx1],
-        # ]
-
         shape1 = {
             "xyz": self.verts_list[idx1],
             "faces": self.faces_list[idx1],
@@ -190,21 +174,6 @@ class FaustScapeDataset(Dataset):
             "vts": self.vts_list[idx1],
             "sample_idx": self.sample_list[idx1],
         }
-
-        # shape2 = [
-        #     self.verts_list[idx2],
-        #     self.faces_list[idx2],
-        #     self.frames_list[idx2],
-        #     self.massvec_list[idx2],
-        #     self.L_list[idx2],
-        #     self.evals_list[idx2],
-        #     self.evecs_list[idx2],
-        #     self.gradX_list[idx2],
-        #     self.gradY_list[idx2],
-        #     self.hks_list[idx2],
-        #     self.vts_list[idx2],
-        #     self.names_list[idx2],
-        # ]
 
         shape2 = {
             "xyz": self.verts_list[idx2],

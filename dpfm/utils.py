@@ -2,6 +2,7 @@ import random
 import numpy as np
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 
 class FrobeniusLoss(nn.Module):
@@ -45,6 +46,8 @@ class NCESoftmaxLoss(nn.Module):
             selected = np.random.choice(map21.shape[0], self.nce_num_pairs, replace=False)
         else:
             selected = torch.arange(map21.shape[0])
+
+        features_1, features_2 = F.normalize(features_1, p=2, dim=-1), F.normalize(features_2, p=2, dim=-1)
 
         query = features_1[map21[selected]]
         keys = features_2[selected]
@@ -202,3 +205,19 @@ def augment_batch(data, rot_x=0, rot_y=90, rot_z=0, std=0.01, noise_clip=0.05, s
     data["shape2"]["xyz"] = data_augmentation(data["shape2"]["xyz"], rot_x, rot_y, rot_z, std, noise_clip, scale_min, scale_max)
 
     return data
+
+
+def normalize_area_scale(verts, faces):
+    coords = verts[faces]
+    vec_A = coords[:, 1, :] - coords[:, 0, :]
+    vec_B = coords[:, 2, :] - coords[:, 0, :]
+    face_areas = torch.norm(torch.cross(vec_A, vec_B, dim=-1), dim=1) * 0.5
+    total_area = torch.sum(face_areas)
+
+    scale = (1 / torch.sqrt(total_area))
+    verts = verts * scale
+
+    # center
+    verts = verts - verts.mean(dim=-2, keepdim=True)
+
+    return verts
